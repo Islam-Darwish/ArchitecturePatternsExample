@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="numbersViewModel"
+            type="com.mixapplications.architecturepatternsexample.ui.NumbersViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/txtNumberOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txtNumberTwo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/txtResult"
+            android:text="@{String.valueOf(numbersViewModel.firstNumber)}"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintHorizontal_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/txtNumberTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/txtNumberOne"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtNumberOne"
+            app:layout_constraintBottom_toBottomOf="@id/txtNumberOne"
+            android:text="@{String.valueOf(numbersViewModel.secondNumber)}" />
+
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txtNumberOne"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnSub"
+            android:text="@{String.valueOf(numbersViewModel.numbersMutableLiveData)}" />
+
+        <Button
+            android:id="@+id/btnSum"
+            android:text="+"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSub"
+            app:layout_constraintTop_toTopOf="@id/btnSub"
+            app:layout_constraintBottom_toBottomOf="@id/btnSub" />
+
+        <Button
+            android:id="@+id/btnSub"
+            android:text="-"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/btnSum"
+            app:layout_constraintEnd_toStartOf="@id/btnDiv"
+            app:layout_constraintTop_toBottomOf="@id/txtResult"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/btnDiv"
+            android:text="/"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/btnSub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnSub"
+            app:layout_constraintBottom_toBottomOf="@id/btnSub"
+            android:onClick="@{()-> numbersViewModel.getDivResult()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
