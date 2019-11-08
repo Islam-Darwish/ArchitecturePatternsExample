@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*numbersViewModel.numbersMutableLiveData.observe(this, new Observer<Float>() {
             @Override
             public void onChanged(Float aFloat) {
-                binding.txtResult.setText(String.valueOf(aFloat)); //disabled because using xml Binding (MVVC & LiveData & DataBinding)
+                binding.txtResult.setText(String.valueOf(aFloat)); //disabled because using xml Binding (MVVM & LiveData & DataBinding)
             }
         });*/
     }
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnSum:
                 //MVC
-                //binding.txtResult.setText(numbers.getFirstNumber() + numbers.getSecondNumber()); //disabled because using xml Binding (MVVC & LiveData & DataBinding)
+                //binding.txtResult.setText(numbers.getFirstNumber() + numbers.getSecondNumber()); //disabled because using xml Binding (MVVM & LiveData & DataBinding)
                 numbersViewModel.numbersMutableLiveData.postValue(numbers.getFirstNumber() + numbers.getSecondNumber());
                 break;
             case R.id.btnSub:
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onSubListener(float result) {
-        //binding.btnSub.setText(result); //disabled because using xml Binding (MVVC & LiveData & DataBinding)
+        //binding.btnSub.setText(result); //disabled because using xml Binding (MVVM & LiveData & DataBinding)
         numbersViewModel.numbersMutableLiveData.postValue(result);
     }
 }
